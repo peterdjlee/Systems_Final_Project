@@ -2,15 +2,12 @@ Project Title: Node
 Kevin Li, Peter Lee
 
 Our program is a tool for Computer Science students that allows them to quickly test sample code as they take notes for a given topic, so that they can see how the code being presented to them works during the lesson.
-A description as to how the project will be used (describe the user interface).
 
 The user interface is divided into 3 main sections (or displays):
- - The upper left box is where the user can enter code.
- - The upper right is where they take regular notes.
- - The bottom section displays the output of the code.
- - After writing a proper c program in the code section, the user will be able to hit a
-   “Compile & Run” button to see the program’s output in the “Output” pane.
- - When they are done with that day’s notes and code, they can press a “save” button that puts all the files.
+ - There is an “open”, “create new”, and “save” button at the top.
+ - The user interface is divided into 3 main sections (or displays.) The upper left box is where the user can enter code, the upper right is where they take regular notes, and the bottom section displays the output of the code.
+ - After writing a proper c program in the code section, the user will be able to hit a “Compile & Run” button to see the program’s output in the “Output” pane.
+ - When they are done with that day’s notes and code, they can press a “save” button that puts all the files into a specified directory
 
 Technical Design:
  - Allocating memory for saving different block of texts to char arrays.
