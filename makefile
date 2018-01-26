@@ -1,5 +1,5 @@
-all: example-0.c
-	gcc `pkg-config --cflags gtk+-3.0` -o node example-0.c `pkg-config --libs gtk+-3.0` -Wno-deprecated
+all: editor.c
+	gcc editor.c -Wall -ansi -o node `pkg-config --cflags --libs gtk+-2.0`
 clean:
 	rm *.o
 run: all
