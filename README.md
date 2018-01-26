@@ -10,11 +10,11 @@ Linux:
 
 Mac:
 1. Install [homebrew](https://brew.sh/)
-2. Open terminal and type `brew install gtk+3`
+2. Open terminal and type `brew install gtk+`
 
 ## To compile
 In terminal: <br>
-`$ gcc editor.c -Wall -ansi -o node pkg-config --cflags --libs gtk+-2.0`
+`$ gcc editor.c -Wall -ansi -o node pkg-config --cflags --libs gtk+`
 <br>
 OR
 <br>
