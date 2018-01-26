@@ -25,4 +25,5 @@ $ make run
 Instructions:
 1. Take regular notes in the "Node: Notes" window.
 2. Type example code that will be compiled and ran in the "Node: Codes" window.
-3. In the codes window, click File and then click Compile&Run.
+3. Save your code file as "run.c". 
+4. In the output window, click File and then click Compile&Run. 
