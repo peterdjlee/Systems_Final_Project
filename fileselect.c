@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <stdlib.h>
 
-#include "main.c"
 #define CHAR_BUF 2000
 
 GtkWidget *window; /* Main gtk window */
@@ -210,8 +209,4 @@ static gboolean save_if_modified(void)
 	g_printerr("Error response %d from dialog\n", resp);
 	return FALSE;
     }
-}
-
-static void compile_run() {
-  // compile_and_run("run.c");
 }

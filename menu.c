@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
+#include "main.c"
 
 GtkWidget *view; /* TextView */
 
@@ -20,6 +21,18 @@ void show_about(void);
 #define MENU_SAVE_AS 4
 #define MENU_CRUN 5
 #define MENU_QUIT 6
+
+
+
+void set_text() {
+  GtkTextBuffer *buffer;
+  buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  FILE * fp = fopen("run", "r");
+  char output[2000];
+  fgets(output, 2000, fp);
+  gtk_text_buffer_set_text (buffer, output, -1);
+
+}
 
 static void menu_show(gpointer data, guint action, GtkWidget *widget)
 {
@@ -56,6 +69,7 @@ static void menu_show(gpointer data, guint action, GtkWidget *widget)
 	break;
     case MENU_CRUN:
   compile_and_run("run.c");
+  set_text();
   break;
       case MENU_QUIT:
 	if(save_if_modified())            /* call save if modified when user opens a new file */
