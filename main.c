@@ -118,18 +118,12 @@ void compile_and_run(char * argv){
     char ** cmd2 = parse_args(cmdline2, ' ');
     //printf("arg 0: %s\narg 1: %s\narg 2: %s\n", cmd2[0], cmd2[1], cmd2[2]);
     redir_success = redir_in(cmd2);
-    printf("%d\n", redir_success);
-    if (redir_success == -1){
-      printf("code!!!");
+    printf("redir_success: %d\n", redir_success);
+    if (redir_success < 0){
+      printf("code!!!\n");
       char cmdline3[100];
       strcpy(cmdline3, "./a.out > ");
         //remove .c from the string
-      int length = strlen(line);
-      int i;
-      char filename[100];
-      for (i = 0; i < length - 2; i++){
-        filename[i] = line[i];
-      }
       strcat(cmdline3, filename);
       char ** cmd3 = parse_args(cmdline3, ' ');
       redir_success = redir_in(cmd3);
