@@ -31,5 +31,8 @@ OR
 ### Instructions
 1. Take regular notes in the "Node: Notes" window.
 2. Type example code that will be compiled and ran in the "Node: Codes" window.
-3. Save your code file as "run.c". 
+3. Save your code file as "run.c". (Or use a different text editor to write a program and name it "run.c") 
 4. In the output window, click File and then click Compile&Run. 
+
+### Bugz
+Save feature does not work. File is made but is blank.
