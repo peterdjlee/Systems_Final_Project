@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
+#include <string.h>
 
 static void print_hello(GtkWidget *widget, gpointer data) {
   g_print("Hello World\n");
@@ -7,11 +8,10 @@ static void print_hello(GtkWidget *widget, gpointer data) {
 
 void create_window (char *name, int type) {
     GtkWidget *window;
-    GtkWidget *box;
 
     GtkWidget *button;
+
     GtkWidget *view;
-    GtkWidget *scroll;
     GtkTextBuffer *buffer;
     GtkCssProvider *provider;
     GtkStyleContext *context;
@@ -28,25 +28,14 @@ void create_window (char *name, int type) {
     gtk_window_set_default_size(GTK_WINDOW(window), width * 1/2, height * 1/2);
     gtk_window_set_resizable (GTK_WINDOW(window), FALSE);
 
-    box = gtk_vbox_new(FALSE, 0); /* create a container where the menus n text widget goes */
-    /* false if u dont want extra padding in the box, 0 for spacing */
-
-    /* add the box wid in the window */
-    gtk_container_add(GTK_CONTAINER(window), box);
-
-    /* put a scroll window widget */
-    scroll = gtk_scrolled_window_new(NULL, NULL);
-
-    /* put the scroll window in the text container */
-    gtk_box_pack_start(GTK_BOX(box), scroll, TRUE, TRUE, 0);
-
     view = gtk_text_view_new ();
+    gtk_container_add(GTK_CONTAINER(window), view);
+
+    // button = gtk_button_new_with_label("button");
+    // gtk_container_add(GTK_CONTAINER(window), button);
+
     // Set the text
     buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-    gtk_container_add(GTK_CONTAINER(scroll), view);
-
-    // button = gtk_button_new_with_label("Compile & Run");
-    // gtk_container_add(GTK_CONTAINER(window), button);
 
     if (type == 1) {
       gtk_text_buffer_set_text (buffer, "Take notes here", -1);
@@ -108,6 +97,6 @@ int main (int argc, char **argv) {
       create_window ("Node: Notes", 1);
       create_window ("Node: Output", 3);
 
-      gtk_main ();
+      gtk_main();
       exit(0);
 }

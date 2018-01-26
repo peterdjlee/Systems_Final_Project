@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdlib.h>
+
+#include "main.c"
 #define CHAR_BUF 2000
 
 GtkWidget *window; /* Main gtk window */
@@ -211,5 +213,5 @@ static gboolean save_if_modified(void)
 }
 
 static void compile_run() {
-  printf("hello\n");
+  // compile_and_run("run.c");
 }

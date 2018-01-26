@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <stdlib.h>
 
-
 GtkWidget *view; /* TextView */
 
 /* used for selecting the text */
@@ -56,7 +55,7 @@ static void menu_show(gpointer data, guint action, GtkWidget *widget)
 	save_file(NULL);
 	break;
     case MENU_CRUN:
-  compile_run();
+  compile_and_run("run.c");
   break;
       case MENU_QUIT:
 	if(save_if_modified())            /* call save if modified when user opens a new file */
@@ -64,8 +63,6 @@ static void menu_show(gpointer data, guint action, GtkWidget *widget)
 	break;
       }
 }
-
-
 
 /* actual menu creation */
 
