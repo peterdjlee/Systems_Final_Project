@@ -21,6 +21,7 @@ static void activate(GtkApplication* app, gpointer user_data) {
   window = gtk_application_window_new (app);
   gtk_window_set_title(GTK_WINDOW(window), "Node");
   gtk_window_set_default_size(GTK_WINDOW(window), 1000, 500);
+  gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 
   view = gtk_text_view_new ();
   gtk_container_add(GTK_CONTAINER(window), view);
@@ -34,7 +35,7 @@ static void activate(GtkApplication* app, gpointer user_data) {
   provider = gtk_css_provider_new ();
   gtk_css_provider_load_from_data (provider,
                                  "textview {"
-                                 " font: 25 courier;"
+                                 " font: 25px courier;"
                                  "  color: black;"
                                  "}",
                                  -1,
