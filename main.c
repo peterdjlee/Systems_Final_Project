@@ -14,7 +14,7 @@ void exec_one(char ** args);
 //PARSE ARGS METHOD
 char ** parse_args(char * line, char delimiter) {
   int size = 6;
-  char * s1 = (char *)malloc(size * sizeof(char *));
+  char ** s1 = (char **)malloc(size * sizeof(char *));
 
   int i = 0;
   char * pos;
@@ -43,7 +43,7 @@ char ** parse_args(char * line, char delimiter) {
 */
 int redir_in(char ** args){
     //printf("this happened!\n");
-    int cmd, file, i, retval;
+    int file, i, retval;
     i = 0;
     //printf("%s\n",args[3]);
     while (args[i]) {
@@ -91,8 +91,6 @@ void compile_and_run(char * argv){
   //printf("%s\n",cmdline1);
   //printf("%s\n",cmdline2);
 
-  int status = 0;
-
   //forks of a process that compiles the code file
   int exec_success;
   int f = fork();
@@ -137,4 +135,12 @@ void compile_and_run(char * argv){
     waitpid(f, &returnStatus, 0);  // Parent process waits here for child to terminate.
 
   }
+
 }
+
+// int main(int argc, char *argv[]){
+//   char * arg;
+//   arg = argv[1];
+//   compile_and_run(arg);
+//   return 0;
+// }
