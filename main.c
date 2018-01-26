@@ -39,11 +39,11 @@ char ** parse_args(char * line, char delimiter) {
   Arguments:
     char ** args -> A pointer to the original string
   Return Value:
-    N/A
+    int
 */
-void redir_in(char ** args){
-    printf("this happened!\n");
-    int cmd, file, i;
+int redir_in(char ** args){
+    //printf("this happened!\n");
+    int cmd, file, i, retval;
     i = 0;
     //printf("%s\n",args[3]);
     while (args[i]) {
@@ -52,25 +52,25 @@ void redir_in(char ** args){
       }
       i++;
     }
-    printf("this is i: %d\n", i);
-    printf("this is the thing at i: %s\n", args[i]);
+    //printf("this is i: %d\n", i);
+    //printf("this is the thing at i: %s\n", args[i]);
     file = i + 1;
     int fd, b, c;
     fd = open(args[file], O_CREAT | O_WRONLY | O_TRUNC | O_RDONLY, 0644);
     b = dup(STDOUT_FILENO);
     c = dup2(fd, STDOUT_FILENO);
     args[i]=0;
-    execvp(args[0], args);
+    retval = execvp(args[0], args);
     dup2(b,c);
-    exit(0);
+    return retval;
 }
 
-int main(int argc, char *argv[]){
-  printf("\nCOMPILING AND RUNNING YOUR CODE...\n");
+void compile_and_run(char * argv){
+  //printf("\nCOMPILING AND RUNNING YOUR CODE...\n");
 
   //getting the name of the file from the command line
   char line[100];
-  strcpy(line, argv[1]);
+  strcpy(line, argv);
 
   //creating: "gcc -o code filename.c"
   char cmdline1[100];
@@ -94,12 +94,14 @@ int main(int argc, char *argv[]){
   int status = 0;
 
   //forks of a process that compiles the code file
+  int exec_success;
   int f = fork();
   if (f == 0) { // child process
     char ** cmd = parse_args(cmdline1, ' ');
-    int i;
+
     //printf("arg 0: %s\narg 1: %s\narg 2: %s\narg 3: %s\narg 4: %s\n", cmd[0], cmd[1], cmd[2], cmd[3], cmd[4]);
-    i = execvp(cmd[0], cmd);
+    //printf("here\n");
+    exec_success = execvp(cmd[0], cmd);
   }
   else if (f < 0) { //fork failed
     printf("fork failed :(\n");
@@ -107,27 +109,47 @@ int main(int argc, char *argv[]){
   else { //
     int returnStatus;
     waitpid(f, &returnStatus, 0);  // Parent process waits here for child to terminate.
-
   }
 
   //forks off a process to redirect the ./code to a new file
+  int redir_success;
   f = fork();
   if (f == 0) { // child process
     char ** cmd2 = parse_args(cmdline2, ' ');
     //printf("arg 0: %s\narg 1: %s\narg 2: %s\n", cmd2[0], cmd2[1], cmd2[2]);
-    redir_in(cmd2);
-    printf("this finished\n");
-    exit(0);
+    redir_success = redir_in(cmd2);
+    printf("%d\n", redir_success);
+    if (redir_success == -1){
+      printf("code!!!");
+      char cmdline3[100];
+      strcpy(cmdline3, "./a.out > ");
+        //remove .c from the string
+      int length = strlen(line);
+      int i;
+      char filename[100];
+      for (i = 0; i < length - 2; i++){
+        filename[i] = line[i];
+      }
+      strcat(cmdline3, filename);
+      char ** cmd3 = parse_args(cmdline3, ' ');
+      redir_success = redir_in(cmd3);
+    }
+    //printf("this finished\n");
   }
   else if (f < 0) { //fork failed
-    printf("fork failed :(\n");
+    //printf("fork failed :(\n");
   }
   else { //
     int returnStatus;
     waitpid(f, &returnStatus, 0);  // Parent process waits here for child to terminate.
 
   }
-  printf("THEN this finished\n");
 
+}
+
+int main(int argc, char *argv[]){
+  char * arg;
+  arg = argv[1];
+  compile_and_run(arg);
   return 0;
 }
