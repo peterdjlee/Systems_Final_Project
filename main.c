@@ -146,10 +146,3 @@ void compile_and_run(char * argv){
   }
 
 }
-
-int main(int argc, char *argv[]){
-  char * arg;
-  arg = argv[1];
-  compile_and_run(arg);
-  return 0;
-}
