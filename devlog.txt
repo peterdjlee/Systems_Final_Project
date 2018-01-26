@@ -1,0 +1,32 @@
+LeeP -- 2017-12-27
+Created Repo
+
+LeeP, LiK -- 2017-12-27
+Wrote the proposal
+
+LiK -- 2017-1-10
+Worked on the code compiling, and everything works string manipulation wise, except it still won’t execvp correctly.
+
+LiK, LeeD -- 2017-1-12
+Discussed how to fix the execvp issue
+
+LiK, LeeD -- 2017-1-15
+looked at gtk more closely to see how to create windows and text editors
+
+LeeD -- 2017-1-18
+updated read, and started the textview
+
+LiK, LeeD -- 2017-1-19
+tried more ways to fix the bug in main.c
+
+LiK, LeeD -- 2017-1-23
+worked on gtk
+
+LiK -- 2017-1-25
+figured out and committed updated version of main.c
+
+LeeD -- 2017-1-25
+fixed gtk, updated readme
+
+LiK, LeeD -- 2017-1-26
+fixed last few bugs
