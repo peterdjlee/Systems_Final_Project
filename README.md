@@ -6,7 +6,7 @@ Node is a note-taking program that allows its users to easily take notes in prog
 
 ## Installing gtk
 Linux:
-1. Open terminal and type `sudo apt-get install gtk+3`
+1. Open terminal and type `sudo apt-get install gtk+`
 
 Mac:
 1. Install [homebrew](https://brew.sh/)
