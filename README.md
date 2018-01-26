@@ -2,7 +2,7 @@
 Node by Kevin Li & Peter Lee, Period 10
 
 Description:
-Node is a note-taking program that allows its users to easily take notes in programming in c and compile and run the example code without having to open terminal.
+Node is a note-taking program that allows its users to easily take notes in programming in c and compile and run the example code at the same time.
 
 ### Installing gtk
 Linux:
